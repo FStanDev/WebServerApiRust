@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Car</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">GarageTeam</a>
+        <a class="navbar-brand" href="/garages">Garages</a>
+        <a class="navbar-brand" href="/cars">Cars</a>
+    </nav>
+    <main class="container">
+        <h3>Create a new car to repair</h3>
+        <form>
+            <div class="form-group">
+              <label for="car_model" class="m-2">Model</label>
+              <input type="text" class="form-control m-2" id="car_model" placeholder="Enter model">
+            </div>
+            
+          </form>
+          <button onclick="create_car()" class="btn btn-primary m-2" id="create_car_button">Submit</button>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script>
+        function create_car(){
+            let url = "/api/cartorepair/newcar"
+            let model = document.getElementById("car_model").value
+            let data = {
+                "modelo":model,
+                "fecha_entrada": new Date(),
+                "fecha_salida": new Date()
+            }
+            const options = {
+                method: 'POST',
+                headers:{
+                    "Content-Type":"application/json; charset=utf-8"
+                },
+                body: JSON.stringify(data)
+            }
+            console.log(options)
+            fetch(
+                url,
+                options
+            )
+                .then(response => {
+                    alert("Coche creado correctamente")
+                })
+                .catch(err => alert("Error: " + err))
+        }
+    </script>
+</body>
+
+</html>
