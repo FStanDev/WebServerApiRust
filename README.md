@@ -2,7 +2,7 @@
 
 Este es el repositorio de código del tutorial de Rust para crear un webserver con actix, conectarnos a una BBDD Postgresql con Diesel y utilizar templates html con Tera, todo en Rust.
 
-Vídeo Tutorial aquí: 
+Vídeo Tutorial [aquí:](https://youtu.be/bqociCzcXX4) 
 
 ## Configuración previa
 
